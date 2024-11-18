@@ -1,0 +1,47 @@
+<div class="container">
+    <h2>{{ teacherName }}'s Dashboard</h2>
+    <button class="btn btn-secondary" (click)="toggleAddStudent()">Add Student</button>
+  
+    <div *ngIf="isAddStudentVisible" class="mt-3">
+      <h3>{{ editMode ? 'Edit Student' : 'Add Student' }}</h3>
+      <div class="form-group">
+        <label for="studentName">Student Name <span class="text-danger">*</span></label>
+        <input type="text" id="studentName" [(ngModel)]="studentName" name="studentName" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label>Subject Marks <span class="text-danger">*</span></label>
+        <div class="row">
+          <div class="col-4">
+            <input type="number" [(ngModel)]="subjectMarks[0]" name="subject1" class="form-control" placeholder="Subject 1" required />
+          </div>
+          <div class="col-4">
+            <input type="number" [(ngModel)]="subjectMarks[1]" name="subject2" class="form-control" placeholder="Subject 2" required />
+          </div>
+          <div class="col-4">
+            <input type="number" [(ngModel)]="subjectMarks[2]" name="subject3" class="form-control" placeholder="Subject 3" required />
+          </div>
+        </div>
+      </div>
+  
+      <button class="btn btn-success mt-2" (click)="addStudent()">
+        {{ editMode ? 'Update Student' : 'Add Student' }}
+      </button>
+    </div>
+  
+    <div>
+      <button class="btn btn-primary mt-3" [disabled]="!showSubmitBtn" (click)="calculateTotalMarks()">Submit</button>
+    </div>
+  
+    <div class="mt-4">
+      <h3>Student List</h3>
+      <ul class="list-group">
+        <li *ngFor="let student of students; let i = index" class="d-flex list-group-item">
+          {{ student.name }} - Marks: {{ student.marks.join(', ') }}
+          <button class="text-right btn btn-warning btn-sm ml-2 mx-auto" (click)="editStudent(i)">Edit</button>
+          <button class="text-right btn btn-danger btn-sm ml-2 mx-auto" (click)="deleteStudent(i)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
