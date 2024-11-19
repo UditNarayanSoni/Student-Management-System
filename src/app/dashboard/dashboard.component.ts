@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   editMode: boolean = false;
   currentStudentIndex: number = -1;  // To track which student is being edited
   showSubmitBtn: boolean = false;
+  subject_average: any;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -82,6 +83,7 @@ export class DashboardComponent implements OnInit {
     });
 
     subjectAverages = subjectAverages.map(avg => avg / this.students.length);
+    this.subject_average = subjectAverages;
 
     // Ignore the subject with the lowest class average for each student
     const results = this.students.map(student => {

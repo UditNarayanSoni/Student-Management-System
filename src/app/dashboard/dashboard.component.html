@@ -43,5 +43,12 @@
         </li>
       </ul>
     </div>
+  
+    <div class="mt-4" *ngIf="subject_average">
+        <h3>Subject Averages</h3>
+        <li class="d-flex list-group-item">
+            Averages : {{ subject_average.join(', ') }}
+        </li>
+    </div>
   </div>
   
