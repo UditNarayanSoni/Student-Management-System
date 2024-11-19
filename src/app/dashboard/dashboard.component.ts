@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   currentStudentIndex: number = -1;  // To track which student is being edited
   showSubmitBtn: boolean = false;
   subject_average: any;
+  final_result: any;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -92,7 +93,7 @@ export class DashboardComponent implements OnInit {
         .reduce((sum, mark) => sum + mark, 0);
       return { name: student.name, totalMarks, marks: student.marks.filter((_, index) => subjectAverages[index] !== Math.min(...subjectAverages)) };
     });
-
+    this.final_result = results.map(x=> x.name+": "+x.totalMarks);
     console.log(results); // Final result
   }
 }

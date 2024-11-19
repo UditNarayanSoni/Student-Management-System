@@ -49,6 +49,14 @@
         <li class="d-flex list-group-item">
             Averages : {{ subject_average.join(', ') }}
         </li>
+        <div class="mt-4" *ngIf="final_result.length != undefined && final_result.length">
+            <h3>Final Result</h3>
+            <li class="d-flex list-group-item">
+                {{ final_result.join(', ') }}
+            </li>
+        </div>
     </div>
+  
+    
   </div>
   
